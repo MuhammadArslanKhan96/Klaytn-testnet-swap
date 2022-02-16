@@ -13,7 +13,7 @@ type ApiResponse = {
 }
 
 // const api = 'https://api.pancakeswap.info/api/tokens'
-const api = 'https://s.klayswap.com/stat/klayPrice.json'
+const api = 'https://api-baobab-v2.scope.klaytn.com/v2/accounts/0xD5446765A8F332795b6b927C17DBC420d9654D49'
 
 
 const useGetPriceData = () => {

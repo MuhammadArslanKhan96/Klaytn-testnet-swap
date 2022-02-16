@@ -28,14 +28,20 @@ export class WrappedTokenInfo extends Token {
   }
 }
 
-export type TokenAddressMap = Readonly<{ [chainId in ChainId]: Readonly<{ [tokenAddress: string]: WrappedTokenInfo }> }>
+enum KlayChain {
+  MAINNET= 8217,
+  Baobab= 1001
+}
+
+export type TokenAddressMap = Readonly<{ [chainId in KlayChain]: Readonly<{ [tokenAddress: string]: WrappedTokenInfo }> }>
 
 /**
  * An empty result, useful as a default.
  */
+
 const EMPTY_LIST: TokenAddressMap = {
-  [ChainId.MAINNET]: {},
-  [ChainId.BSCTESTNET]: {}
+  [KlayChain.MAINNET]: {},
+  [KlayChain.Baobab]: {},
 }
 
 const listCache: WeakMap<TokenList, TokenAddressMap> | null =
@@ -44,7 +50,7 @@ const listCache: WeakMap<TokenList, TokenAddressMap> | null =
 export function listToTokenMap(list: TokenList): TokenAddressMap {
   const result = listCache?.get(list)
   if (result) return result
-
+console.log(list)
   const map = list.tokens.reduce<TokenAddressMap>(
     (tokenMap, tokenInfo) => {
       const tags: TagInfo[] =
@@ -55,6 +61,7 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
           })
           ?.filter((x): x is TagInfo => Boolean(x)) ?? []
       const token = new WrappedTokenInfo(tokenInfo, tags)
+      console.log(tokenInfo, token, {tokenMap})
       if (tokenMap[token.chainId][token.address] !== undefined) throw Error('Duplicate tokens.')
       return {
         ...tokenMap,
@@ -67,16 +74,19 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
     { ...EMPTY_LIST }
   )
   listCache?.set(list, map)
+  console.log(list, map)
   return map
 }
 
 export function useTokenList(url: string | undefined): TokenAddressMap {
   const lists = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
+  console.log(lists, EMPTY_LIST, url, url && lists[url]?.current)
   return useMemo(() => {
     if (!url) return EMPTY_LIST
     const current = lists[url]?.current
     if (!current) return EMPTY_LIST
     try {
+      console.log(listToTokenMap(current))
       return listToTokenMap(current)
     } catch (error) {
       console.error('Could not show token list due to error', error)
@@ -90,6 +100,7 @@ export function useSelectedListUrl(): string | undefined {
 }
 
 export function useSelectedTokenList(): TokenAddressMap {
+  console.log(useTokenList('klaytn'))
   return useTokenList(useSelectedListUrl())
 }
 
@@ -97,6 +108,7 @@ export function useSelectedListInfo(): { current: TokenList | null; pending: Tok
   const selectedUrl = useSelectedListUrl()
   const listsByUrl = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
   const list = selectedUrl ? listsByUrl[selectedUrl] : undefined
+  console.log(list)
   return {
     current: list?.current ?? null,
     pending: list?.pendingUpdate ?? null,

@@ -34,6 +34,7 @@ const initialState: ListsState = {
   lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
   byUrl: {
     ...DEFAULT_LIST_OF_LISTS.reduce<Mutable<ListsState['byUrl']>>((memo, listUrl) => {
+      console.log(memo, listUrl)
       memo[listUrl] = NEW_LIST_STATE
       return memo
     }, {}),
@@ -46,7 +47,7 @@ const initialState: ListsState = {
   },
   selectedListUrl: DEFAULT_TOKEN_LIST_URL,
 }
-
+console.log(DEFAULT_LIST_OF_LISTS, DEFAULT_TOKEN_LIST_URL)
 export default createReducer(initialState, (builder) =>
   builder
     .addCase(fetchTokenList.pending, (state, { payload: { requestId, url } }) => {
@@ -102,6 +103,7 @@ export default createReducer(initialState, (builder) =>
     .addCase(selectList, (state, { payload: url }) => {
       state.selectedListUrl = url
       // automatically adds list
+      console.log(url)
       if (!state.byUrl[url]) {
         state.byUrl[url] = NEW_LIST_STATE
       }
