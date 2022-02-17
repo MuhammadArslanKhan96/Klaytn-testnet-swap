@@ -47,6 +47,7 @@ export default createReducer(initialState, builder =>
         listeners[chainId][callKey] = listeners[chainId][callKey] ?? {}
         listeners[chainId][callKey][blocksPerFetch] = (listeners[chainId][callKey][blocksPerFetch] ?? 0) + 1
       })
+      console.log({listeners})
     })
     .addCase(
       removeMulticallListeners,
@@ -71,6 +72,7 @@ export default createReducer(initialState, builder =>
     )
     .addCase(fetchingMulticallResults, (state, { payload: { chainId, fetchingBlockNumber, calls } }) => {
       state.callResults[chainId] = state.callResults[chainId] ?? {}
+      console.log(state.callResults)
       calls.forEach(call => {
         const callKey = toCallKey(call)
         const current = state.callResults[chainId][callKey]

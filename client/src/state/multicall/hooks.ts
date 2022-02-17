@@ -97,9 +97,9 @@ function useCallsData(calls: (Call | undefined)[], options?: ListenerOptions): C
       // @ts-ignore
       calls.map<CallResult>((call) => {
         if (!chainId || !call) return INVALID_RESULT
-
         const result = callResults[chainId]?.[toCallKey(call)]
         const data = result?.data && result?.data !== '0x' ? result.data : null
+        console.log({result, callResults})
 
         return { valid: true, data, blockNumber: result?.blockNumber }
       }),
@@ -128,6 +128,7 @@ function toCallState(
   fragment: FunctionFragment | undefined,
   latestBlockNumber: number | undefined
 ): CallState {
+  console.log(callResult)
   if (!callResult) return INVALID_CALL_STATE
   const { valid, data, blockNumber } = callResult
   if (!valid) return INVALID_CALL_STATE
@@ -249,9 +250,11 @@ export function useSingleCallResult(
   }, [contract, fragment, inputs])
 
   const result = useCallsData(calls, options)[0]
+  console.log({result, methodName})
   const latestBlockNumber = useBlockNumber()
 
   return useMemo(() => {
+    console.log(toCallState(result, contract?.interface, fragment, latestBlockNumber))
     return toCallState(result, contract?.interface, fragment, latestBlockNumber)
   }, [result, contract, fragment, latestBlockNumber])
 }

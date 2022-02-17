@@ -1,5 +1,6 @@
 import { parseBytes32String } from '@ethersproject/strings'
 import { Currency, ETHER, Token, currencyEquals } from '@pancakeswap-libs/sdk'
+import { Contract } from 'ethers'
 import { useMemo } from 'react'
 import { useSelectedTokenList } from '../state/lists/hooks'
 import { NEVER_RELOAD, useSingleCallResult } from '../state/multicall/hooks'
@@ -49,10 +50,16 @@ function parseStringOrBytes32(str: string | undefined, bytes32: string | undefin
     : defaultValue
 }
 
+const myAsynFunction = async (tokenContract: Contract): Promise<any> => {
+  const myname = await tokenContract.decimals()
+  console.log(myname)
+  return myname
+}
+
 // undefined if invalid or does not exist
 // null if loading
 // otherwise returns the token
-export function useToken(tokenAddress?: string): Token | undefined | null {
+export function useToken (tokenAddress?: string): Token | undefined | null  {
   const { chainId } = useActiveWeb3React()
   const tokens = useAllTokens()
 
@@ -68,10 +75,15 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
     undefined,
     NEVER_RELOAD
   )
-  console.log(tokenName, tokenNameBytes32, tokenContract)
+  if(tokenContract) {
+    const myname =  myAsynFunction(tokenContract)
+    
+    // console.log( myname)
+  }
   const symbol = useSingleCallResult(token ? undefined : tokenContract, 'symbol', undefined, NEVER_RELOAD)
   const symbolBytes32 = useSingleCallResult(token ? undefined : tokenContractBytes32, 'symbol', undefined, NEVER_RELOAD)
   const decimals = useSingleCallResult(token ? undefined : tokenContract, 'decimals', undefined, NEVER_RELOAD)
+  console.log(decimals)
 
   return useMemo(() => {
     if (token) return token

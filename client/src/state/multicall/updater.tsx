@@ -112,6 +112,7 @@ export function outdatedListeningKeys(
 }
 
 export default function Updater(): null {
+  console.log('updater')
   const dispatch = useDispatch<AppDispatch>()
   const state = useSelector<AppState, AppState['multicall']>((s) => s.multicall)
   // wait for listeners to settle before triggering updates
