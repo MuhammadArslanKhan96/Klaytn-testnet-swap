@@ -1,0 +1,22 @@
+{
+  "short_name": "JungleSwap",
+  "name": "JungleSwap",
+  "icons": [
+    {
+      "src": "./images/jungleSwapLogoWhite.svg",
+      "sizes": "192x192",
+      "type": "image/svg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./images/jungleSwapLogoWhite.svg",
+      "sizes": "512x512",
+      "type": "image/svg",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
