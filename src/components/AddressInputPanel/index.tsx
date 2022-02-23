@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
-import { Text } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { Text } from 'jungleswap-libs'
 import useENS from '../../hooks/useENS'
 import { useActiveWeb3React } from '../../hooks'
 import { ExternalLink } from '../Shared'

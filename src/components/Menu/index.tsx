@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Contract } from '@ethersproject/contracts'
-import { Menu as UikitMenu} from '@pancakeswap-libs/uikit'
+import { Menu as UikitMenu} from 'jungleswap-libs'
 import { useWeb3React } from '@web3-react/core'
 import { useTokenContract } from 'hooks/useContract'
 import { allLanguages } from 'constants/localisation/languageCodes'
