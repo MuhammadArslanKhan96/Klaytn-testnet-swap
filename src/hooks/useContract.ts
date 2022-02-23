@@ -26,8 +26,8 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
   }, [address, ABI, library, withSignerIfPossible, account])
 }
 
-export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: boolean): Contract | null {
-  return useContract(tokenAddress, ERC20_ABI, withSignerIfPossible)
+export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: boolean, customABI?: Array<any> | undefined): Contract | null {
+  return useContract(tokenAddress, customABI || ERC20_ABI, withSignerIfPossible)
 }
 
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {

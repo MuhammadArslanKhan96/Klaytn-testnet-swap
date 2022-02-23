@@ -1,4 +1,7 @@
+import ERC20_INTERFACE from 'constants/abis/erc20'
 import { useEffect, useState } from 'react'
+import { useMultipleContractSingleData } from 'state/multicall/hooks'
+import { useTokenContract } from './useContract'
 
 type ApiResponse = {
   updated_at: string
@@ -13,14 +16,16 @@ type ApiResponse = {
 }
 
 // const api = 'https://api.pancakeswap.info/api/tokens'
-const api = 'https://s.klayswap.com/stat/klayPrice.json'
+const api = 'https://api-baobab-v2.scope.klaytn.com/v2/accounts/0xD5446765A8F332795b6b927C17DBC420d9654D49'
+
 
 
 const useGetPriceData = () => {
   const [data, setData] = useState<ApiResponse | null>(null)
-
+  
   useEffect(() => {
     const fetchData = async () => {
+      // get
       try {
         const response = await fetch(api)
         const res: ApiResponse = await response.json()

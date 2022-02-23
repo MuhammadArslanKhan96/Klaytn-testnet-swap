@@ -1,19 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { Contract } from '@ethersproject/contracts'
 import { Menu as UikitMenu} from '@pancakeswap-libs/uikit'
 import { useWeb3React } from '@web3-react/core'
+import { useTokenContract } from 'hooks/useContract'
 import { allLanguages } from 'constants/localisation/languageCodes'
 import { LanguageContext } from 'hooks/LanguageContext'
 import useTheme from 'hooks/useTheme'
 import styled from 'styled-components'
 import useGetPriceData from 'hooks/useGetPriceData'
-// import useGetLocalProfile from 'hooks/useGetLocalProfile'
 import useAuth from 'hooks/useAuth'
+import LEAF_ABI from '../../constants/abis/leaf.json'
+// import useGetLocalProfile from 'hooks/useGetLocalProfile'
 import links from './config'
 import {ReactComponent as JungleSwapLogoWhite} from './images/jungleSwapLogoWhite.svg'
 import {ReactComponent as JungleSwapLogoBlack} from './images/jungleSwapLogoBlack.svg'
 import './index.css'
 
 const Menu: React.FC = (props) => {
+  const [price, setPrice] = React.useState(0)
   const { account } = useWeb3React()
   const { login, logout } = useAuth()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
@@ -42,8 +46,19 @@ const Menu: React.FC = (props) => {
       height: 60px;
     }
   `
-
-  const src: string = isDark? '/images/jungleSwapLogoWhite.svg' : '/images/jungleSwapLogoBlack.svg'
+  // const tokenContract = new Contract('0x6A748FB156F09594939372A443bC10091dad2BA3' || undefined, LEAF_ABI, undefined)
+  const tokenContract =  useTokenContract('0x6A748FB156F09594939372A443bC10091dad2BA3' || undefined, false, LEAF_ABI)
+  const getLeafdata = async (): Promise<any> => {
+    // getContract
+    // const tokenContract = await to
+    if(tokenContract){
+      const Leaf = await tokenContract?.price()
+      const getPrice = parseInt(Leaf)
+      setPrice(getPrice)
+    }
+  }
+  getLeafdata()
+  // React.useEffect(() => getLeafdata(),[])
 
   return (
     <div>
@@ -64,7 +79,7 @@ const Menu: React.FC = (props) => {
       currentLang={selectedLanguage?.code || ''}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cakePriceUsd={cakePriceUsd}
+      cakePriceUsd={price}
       // profile={profile}
       {...props}
     />

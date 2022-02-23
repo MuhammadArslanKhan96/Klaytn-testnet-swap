@@ -107,3 +107,4 @@ export function useCurrency(currencyId: string | undefined): Currency | null | u
   const token = useToken(isBNB ? undefined : currencyId)
   return isBNB ? ETHER : token
 }
+
