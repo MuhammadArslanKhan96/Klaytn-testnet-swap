@@ -1,0 +1,39 @@
+{
+  "files": {
+    "static/js/0.b9d9a5ec.chunk.js": "/jungleswap/jungleswap-frontend/static/js/0.b9d9a5ec.chunk.js",
+    "static/js/0.b9d9a5ec.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/0.b9d9a5ec.chunk.js.map",
+    "main.css": "/jungleswap/jungleswap-frontend/static/css/main.fd095da5.chunk.css",
+    "main.js": "/jungleswap/jungleswap-frontend/static/js/main.f2ed0255.chunk.js",
+    "main.js.map": "/jungleswap/jungleswap-frontend/static/js/main.f2ed0255.chunk.js.map",
+    "runtime-main.js": "/jungleswap/jungleswap-frontend/static/js/runtime-main.33084cdb.js",
+    "runtime-main.js.map": "/jungleswap/jungleswap-frontend/static/js/runtime-main.33084cdb.js.map",
+    "static/css/3.5268377b.chunk.css": "/jungleswap/jungleswap-frontend/static/css/3.5268377b.chunk.css",
+    "static/js/3.db098c40.chunk.js": "/jungleswap/jungleswap-frontend/static/js/3.db098c40.chunk.js",
+    "static/js/3.db098c40.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/3.db098c40.chunk.js.map",
+    "static/js/4.1a4d215a.chunk.js": "/jungleswap/jungleswap-frontend/static/js/4.1a4d215a.chunk.js",
+    "static/js/4.1a4d215a.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/4.1a4d215a.chunk.js.map",
+    "static/js/5.435ac32a.chunk.js": "/jungleswap/jungleswap-frontend/static/js/5.435ac32a.chunk.js",
+    "static/js/5.435ac32a.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/5.435ac32a.chunk.js.map",
+    "static/js/6.1f7b13b0.chunk.js": "/jungleswap/jungleswap-frontend/static/js/6.1f7b13b0.chunk.js",
+    "static/js/6.1f7b13b0.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/6.1f7b13b0.chunk.js.map",
+    "static/js/7.284e8c57.chunk.js": "/jungleswap/jungleswap-frontend/static/js/7.284e8c57.chunk.js",
+    "static/js/7.284e8c57.chunk.js.map": "/jungleswap/jungleswap-frontend/static/js/7.284e8c57.chunk.js.map",
+    "index.html": "/jungleswap/jungleswap-frontend/index.html",
+    "static/css/3.5268377b.chunk.css.map": "/jungleswap/jungleswap-frontend/static/css/3.5268377b.chunk.css.map",
+    "static/css/main.fd095da5.chunk.css.map": "/jungleswap/jungleswap-frontend/static/css/main.fd095da5.chunk.css.map",
+    "static/js/0.b9d9a5ec.chunk.js.LICENSE.txt": "/jungleswap/jungleswap-frontend/static/js/0.b9d9a5ec.chunk.js.LICENSE.txt",
+    "static/js/3.db098c40.chunk.js.LICENSE.txt": "/jungleswap/jungleswap-frontend/static/js/3.db098c40.chunk.js.LICENSE.txt",
+    "static/js/4.1a4d215a.chunk.js.LICENSE.txt": "/jungleswap/jungleswap-frontend/static/js/4.1a4d215a.chunk.js.LICENSE.txt",
+    "static/js/5.435ac32a.chunk.js.LICENSE.txt": "/jungleswap/jungleswap-frontend/static/js/5.435ac32a.chunk.js.LICENSE.txt",
+    "static/media/inter.css": "/jungleswap/jungleswap-frontend/static/media/Inter.var.a738a131.woff2",
+    "static/media/jungleSwapLogoBlack.24f43d66.svg": "/jungleswap/jungleswap-frontend/static/media/jungleSwapLogoBlack.24f43d66.svg",
+    "static/media/jungleSwapLogoWhite.cf0b7688.svg": "/jungleswap/jungleswap-frontend/static/media/jungleSwapLogoWhite.cf0b7688.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33084cdb.js",
+    "static/css/3.5268377b.chunk.css",
+    "static/js/3.db098c40.chunk.js",
+    "static/css/main.fd095da5.chunk.css",
+    "static/js/main.f2ed0255.chunk.js"
+  ]
+}
